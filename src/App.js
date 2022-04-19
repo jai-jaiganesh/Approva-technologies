@@ -1,25 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from "react";
 
-function App() {
+
+
+
+export default function App() {
+  const [text, setText] = useState("");
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <textarea
+        value={text}
+        onChange={(e) => {
+          setText(e.target.value);
+          const strArr = text.split(" ");
+          const obj = {
+            "realy": "really",
+            "wierd":"weird"
+          };
+          const objArr = Object.getOwnPropertyNames(obj);
+          strArr.map((d, i) => {
+            const n = objArr.indexOf(d);
+            if (n !== -1) {
+              strArr[i] = obj[objArr[n]];
+              setText(strArr.join(" ")+" ");
+            }
+            return true;
+          });
+        }}
+      />
     </div>
   );
 }
-
-export default App;
+ 
