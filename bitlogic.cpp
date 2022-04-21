@@ -1,32 +1,22 @@
-
-#include <iostream>
-using namespace std;
-int maxXor(int l, int r,int k) {
-    int a=0;
-    for (int i=l;i<=r;i++)
-    {
-        for (int j=i;j<=r;j++)
-        {
-        a=max(a,(i^j));
+<script>
+	
+	function maximizingXor(l, r,k) {
+        
+        let xor = 0;
+        for(let i = l; i <= r; i++) {
+            for(let j = l; j <= r; j++) {
+                xor = Math.max(i ^ j, xor);
+            }
         }
+    if(xor<=k){
+        return xor;
     }
-       if(a<=k){
-        return a;
-       }
-
-}
-int main() {
-    int res;
-    int _lo;
-    cin >> _lo;
-    
-    int _hi;
-    cin >> _hi;
-    int k;
-    cin>>k;
-    res = maxXor(_lo, _hi,k);
-    cout << res;
-    return 0;
-}
-
-
+    }
+	
+	let lo = 2;
+	let hi = 4;
+    let K=8;
+   
+	document.write(maximizingXor(L, R,K));
+	
+</script>
